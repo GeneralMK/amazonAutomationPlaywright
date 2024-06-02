@@ -21,8 +21,9 @@ jobs:
 
       - name: Install Allure
         run: |
-          wget -qO- https://dl.bintray.com/qameta/generic/io/qameta/allure/allure/2.13.8/allure-2.13.8.tgz | tar -xz -C /opt/
-          ln -s /opt/allure-2.13.8/bin/allure /usr/bin/allure
+          wget https://github.com/allure-framework/allure2/releases/latest/download/allure-2.21.0.tgz -O /tmp/allure.tgz
+          tar -zxvf /tmp/allure.tgz -C /opt/
+          ln -s /opt/allure-2.21.0/bin/allure /usr/bin/allure
 
       - name: Generate Allure report
         run: allure generate allure-results --clean -o allure-report
@@ -31,5 +32,5 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: allure-report
-          path: allure-report  
+          path: allure-report 
 
