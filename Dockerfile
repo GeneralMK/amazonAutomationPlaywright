@@ -1,6 +1,6 @@
 FROM python:3.11
 
-WORKDIR /automation
+WORKDIR /amazonAutomation
 
 # Install dependencies
 COPY requirements.txt .

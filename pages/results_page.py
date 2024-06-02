@@ -8,7 +8,8 @@ class ResultsPage(BasePage):
         self.page = page
 
     def select_product(self, product):
-        
+        handle_elememt = self.page.wait_for_selector(f"//span[contains(text(),'{product}')]")
+        handle_elememt.scroll_into_view_if_needed()
         if self.page.is_visible(f"//span[contains(text(),'{product}')]"):
             self.page.click(f"//span[contains(text(),'{product}')]")
         else:

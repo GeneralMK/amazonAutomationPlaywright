@@ -8,7 +8,7 @@ class QuantityPage(BasePage):
         self.page = page
 
      def increase_qauntity(self, quantity):
-         self.page.wait_for_timeout(30000)
+         self.page.wait_for_timeout(10000)
          self.page.screenshot(path="screenshots/cart_product.png")
          price_locator = self.page.locator("//form[@id='activeCartViewForm']//div[@data-name='Subtotals']//span[@class='a-size-medium a-color-base sc-price sc-white-space-nowrap']")
          self.page.get_by_label("Qty:").select_option(quantity)

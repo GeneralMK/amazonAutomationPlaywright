@@ -19,3 +19,17 @@ jobs:
       - name: Run Playwright tests
         run: docker run --rm my-playwright-app
 
+      - name: Install Allure
+        run: |
+          wget -qO- https://dl.bintray.com/qameta/generic/io/qameta/allure/allure/2.13.8/allure-2.13.8.tgz | tar -xz -C /opt/
+          ln -s /opt/allure-2.13.8/bin/allure /usr/bin/allure
+
+      - name: Generate Allure report
+        run: allure generate allure-results --clean -o allure-report
+
+      - name: Upload Allure report
+        uses: actions/upload-artifact@v2
+        with:
+          name: allure-report
+          path: allure-report  
+
