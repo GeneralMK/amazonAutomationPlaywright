@@ -1,12 +1,11 @@
-FROM python:3.11
+FROM mcr.microsoft.com/playwright/python:v1.44.0-jammy
 
 WORKDIR /amazonAutomation
 
-# Install dependencies
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt && \
-    python -m playwright install-deps && \
-    python -m playwright install
 
-# Copy the automation code
+RUN pip install --no-cache-dir -r requirements.txt
+
 COPY . .
+
+CMD ["pytest", "--alluredir=allure-results"]
