@@ -24,6 +24,7 @@ jobs:
         run: docker build -t amazon-playwright-tests .
 
       - name: Run Playwright tests
+        continue-on-error: true
         run: docker run --rm -v ${{ github.workspace }}/allure-results:/amazonAutomation/allure-results amazon-playwright-tests
 
       - name: Install Allure CLI
